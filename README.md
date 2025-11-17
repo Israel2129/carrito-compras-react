@@ -1,12 +1,22 @@
-# React + Vite
+🛒Carrito de Compras
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una aplicación de carrito de compras desarrollada con React, JavaScript y CSS, utilizando la API de Fake Store
+para obtener productos en tiempo real.
 
-Currently, two official plugins are available:
+🚀 Tecnologías
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+React (con Vite como bundler)
 
-## Expanding the ESLint configuration
+JavaScript (ES6+)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+CSS + Bootstrap(para los estilos)
+
+Fake Store API (para simular productos de una tienda online)
+
+✨ Funcionalidades
+
+Consulta de productos desde una API externa.
+
+Visualización de productos en tarjetas.
+
+Estilos con CSS Grid para organizar los elementos.

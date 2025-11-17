@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* ==================================================== */
 /* VARIABLES GLOBALES
 /* ==================================================== */
@@ -166,3 +167,178 @@
         gap: 16px;
     }
 }
+=======
+/* ==================================================== */
+/* VARIABLES GLOBALES
+/* ==================================================== */
+:root {
+    /* Colores */
+    --color-primario: #007bff;
+    --color-secundario: #f7f7f7;
+    --color-texto-oscuro: #333333;
+    --color-texto-claro: #777777;
+    --color-alerta: #dc3545;
+    --color-fondo-tarjeta: #ffffff;
+
+    --sombra-base: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --sombra-hover: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+    --espaciado-grilla: 32px;
+    --radio-borde: 12px;
+
+    --tiempo-transicion: 0.3s;
+}
+
+/* ==================================================== */
+/* ESTILOS DE LA GRILLA Y LA TARJETA */
+/* ==================================================== */
+
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--espaciado-grilla);
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tarjeta {
+    display: flex;
+    flex-direction: column;
+
+    border: none;
+    border-radius: var(--radio-borde);
+    overflow: hidden;
+    background-color: var(--color-fondo-tarjeta);
+    padding: 0;
+
+    box-shadow: var(--sombra-base);
+    transition: transform var(--tiempo-transicion) ease-in-out,
+        box-shadow var(--tiempo-transicion) ease-in-out;
+}
+
+.tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-hover);
+}
+/* ==================================================== */
+/* Estilos para la imagen */
+/* ==================================================== */
+.tarjeta-imagen {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    padding: 20px;
+    background-color: var(--color-secundario);
+    margin: 0;
+}
+
+.tarjeta-contenido {
+    flex: 1;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tarjeta-titulo {
+    margin: 0 0 8px 0;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--color-texto-oscuro);
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-clamp: 2;
+}
+
+.tarjeta-descripcion {
+    margin: 0 0 15px 0;
+    font-size: 0.9em;
+    color: var(--color-texto-claro);
+    flex-grow: 1;
+
+    /* Limita a 3 líneas */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-clamp: 3;
+}
+
+.tarjeta-precio {
+    margin-top: auto;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--color-primario);
+    padding-bottom: 15px;
+}
+
+/* ==================================================== */
+/* ESTILOS DE BOTONES */
+/* ==================================================== */
+
+.boton-agregar,
+.boton-quitar {
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color var(--tiempo-transicion) ease,
+        border-color var(--tiempo-transicion) ease;
+    width: 100%;
+    margin-top: 10px;
+    border-width: 2px;
+    border-style: solid;
+}
+/* ==================================================== */
+/* Botón Agregar */
+/* ==================================================== */
+.boton-agregar {
+    background-color: var(--color-primario);
+    color: white;
+    border-color: var(--color-primario);
+}
+
+.boton-agregar:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+/* ==================================================== */
+/* Botón Quitar */
+/* ==================================================== */
+.boton-quitar {
+    background-color: transparent;
+    color: var(--color-alerta);
+    border-color: var(--color-alerta);
+}
+
+.boton-quitar:hover {
+    background-color: var(--color-alerta);
+    color: white;
+}
+
+/* ==================================================== */
+/* DISEÑO RESPONSIVO */
+/* ==================================================== */
+
+@media (max-width: 900px) {
+    .productos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .productos-grid {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    .tarjeta-imagen {
+        height: 180px;
+    }
+}
+>>>>>>> 6762103b372148fae7baacc3316bd9a06ead7f3c
