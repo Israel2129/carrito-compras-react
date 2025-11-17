@@ -1,178 +1,7 @@
-<<<<<<< HEAD
 /* ==================================================== */
 /* VARIABLES GLOBALES
 /* ==================================================== */
 :root {
-    --color-primario: #007bff;
-    --color-secundario: #f7f7f7;
-    --color-texto-oscuro: #333333;
-    --color-texto-claro: #777777;
-    --color-alerta: #dc3545;
-    --color-fondo-tarjeta: #ffffff;
-
-    --sombra-base: 0 6px 15px rgba(0, 0, 0, 0.08);
-    --sombra-hover: 0 10px 25px rgba(0, 0, 0, 0.15);
-
-    --espaciado-grilla: 32px;
-    --radio-borde: 12px;
-
-    --tiempo-transicion: 0.3s;
-}
-
-/* ==================================================== */
-/* GRILLA DE PRODUCTOS */
-/* ==================================================== */
-.productos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--espaciado-grilla);
-    padding: 30px;
-    max-width: 1600px;
-    margin: 0 auto;
-}
-
-/* ==================================================== */
-/* TARJETA MODERNA */
-/* ==================================================== */
-.tarjeta {
-    display: flex;
-    flex-direction: column;
-    border-radius: var(--radio-borde);
-    overflow: hidden;
-    background-color: var(--color-fondo-tarjeta);
-    padding: 0;
-    box-shadow: var(--sombra-base);
-    transition: transform var(--tiempo-transicion) ease,
-        box-shadow var(--tiempo-transicion) ease;
-}
-
-.tarjeta:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--sombra-hover);
-}
-
-/* ==================================================== */
-/* IMAGEN DEL PRODUCTO */
-/* ==================================================== */
-.tarjeta-imagen {
-    width: 100%;
-    height: 180px;
-    object-fit: contain;
-    background-color: var(--color-secundario);
-}
-
-/* ==================================================== */
-/* CONTENIDO DE LA TARJETA */
-/* ==================================================== */
-.tarjeta-contenido {
-    flex: 1;
-    padding: 15px 20px;
-    display: flex;
-    flex-direction: column;
-}
-
-.tarjeta-titulo {
-    margin: 0 0 8px 0;
-    font-size: 1.2em;
-    font-weight: 600;
-    color: var(--color-texto-oscuro);
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.tarjeta-descripcion {
-    margin: 0 0 15px 0;
-    font-size: 0.95em;
-    color: var(--color-texto-claro);
-    flex-grow: 1;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.tarjeta-precio {
-    margin-top: auto;
-    font-size: 1.4em;
-    font-weight: 700;
-    color: var(--color-primario);
-    padding-bottom: 15px;
-}
-
-/* ==================================================== */
-/* BOTONES MODERNOS */
-/* ==================================================== */
-.boton-agregar,
-.boton-quitar {
-    padding: 12px 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all var(--tiempo-transicion) ease;
-    width: 100%;
-    margin-top: 10px;
-    border: none;
-}
-
-.boton-agregar {
-    background-color: var(--color-primario);
-    color: #fff;
-}
-
-.boton-agregar:hover {
-    background-color: #0056b3;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.boton-quitar {
-    background-color: transparent;
-    color: var(--color-alerta);
-    border: 2px solid var(--color-alerta);
-}
-
-.boton-quitar:hover {
-    background-color: var(--color-alerta);
-    color: #fff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* ==================================================== */
-/* RESPONSIVE */
-/* ==================================================== */
-@media (max-width: 1599px) {
-    .productos-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
-        padding: 24px;
-    }
-}
-
-@media (max-width: 899px) {
-    .productos-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 20px;
-    }
-}
-
-@media (max-width: 375px) {
-    .tarjeta-imagen {
-        height: 160px;
-    }
-
-    .productos-grid {
-        padding: 15px;
-        gap: 16px;
-    }
-}
-=======
-/* ==================================================== */
-/* VARIABLES GLOBALES
-/* ==================================================== */
-:root {
-    /* Colores */
     --color-primario: #007bff;
     --color-secundario: #f7f7f7;
     --color-texto-oscuro: #333333;
@@ -192,26 +21,26 @@
 /* ==================================================== */
 /* ESTILOS DE LA GRILLA Y LA TARJETA */
 /* ==================================================== */
-
 .productos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(200px, 1fr)
+    ); /* <- bajé a 200px */
     gap: var(--espaciado-grilla);
     padding: 30px;
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
 }
 
 .tarjeta {
     display: flex;
     flex-direction: column;
-
     border: none;
     border-radius: var(--radio-borde);
     overflow: hidden;
     background-color: var(--color-fondo-tarjeta);
     padding: 0;
-
     box-shadow: var(--sombra-base);
     transition: transform var(--tiempo-transicion) ease-in-out,
         box-shadow var(--tiempo-transicion) ease-in-out;
@@ -221,6 +50,7 @@
     transform: translateY(-5px);
     box-shadow: var(--sombra-hover);
 }
+
 /* ==================================================== */
 /* Estilos para la imagen */
 /* ==================================================== */
@@ -245,12 +75,10 @@
     font-size: 1.1em;
     font-weight: 600;
     color: var(--color-texto-oscuro);
-
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    line-clamp: 2;
 }
 
 .tarjeta-descripcion {
@@ -258,13 +86,10 @@
     font-size: 0.9em;
     color: var(--color-texto-claro);
     flex-grow: 1;
-
-    /* Limita a 3 líneas */
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    line-clamp: 3;
 }
 
 .tarjeta-precio {
@@ -278,7 +103,6 @@
 /* ==================================================== */
 /* ESTILOS DE BOTONES */
 /* ==================================================== */
-
 .boton-agregar,
 .boton-quitar {
     padding: 10px 15px;
@@ -292,9 +116,7 @@
     border-width: 2px;
     border-style: solid;
 }
-/* ==================================================== */
-/* Botón Agregar */
-/* ==================================================== */
+
 .boton-agregar {
     background-color: var(--color-primario);
     color: white;
@@ -305,9 +127,7 @@
     background-color: #0056b3;
     border-color: #0056b3;
 }
-/* ==================================================== */
-/* Botón Quitar */
-/* ==================================================== */
+
 .boton-quitar {
     background-color: transparent;
     color: var(--color-alerta);
@@ -318,22 +138,158 @@
     background-color: var(--color-alerta);
     color: white;
 }
+/* modalCheckout.css */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-checkout {
+    background: #fff;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    padding: 20px;
+    animation: modalFadeIn 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.modal-close {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.modal-body {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.modal-body img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #f7f7f7;
+}
+
+.modal-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.precio {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #007bff;
+}
+
+.cantidad {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cantidad button {
+    padding: 5px 10px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #007bff;
+    background: white;
+    color: #007bff;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.cantidad button:hover {
+    background: #007bff;
+    color: white;
+}
+
+.modal-footer {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.confirmar {
+    flex: 1;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.confirmar:hover {
+    background: #0056b3;
+}
+
+.cancelar {
+    flex: 1;
+    background: transparent;
+    border: 2px solid #dc3545;
+    color: #dc3545;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.cancelar:hover {
+    background: #dc3545;
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 450px) {
+    .modal-body {
+        flex-direction: column;
+        align-items: center;
+    }
+}
 
 /* ==================================================== */
 /* DISEÑO RESPONSIVO */
 /* ==================================================== */
-
-@media (max-width: 900px) {
+@media (max-width: 375px) {
     .productos-grid {
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 20px;
-        padding: 20px;
-    }
-}
-
-@media (max-width: 600px) {
-    .productos-grid {
-        grid-template-columns: 1fr;
+        gap: 16px;
         padding: 15px;
     }
 
@@ -341,4 +297,14 @@
         height: 180px;
     }
 }
->>>>>>> 6762103b372148fae7baacc3316bd9a06ead7f3c
+
+@media (max-width: 375px) {
+    .tarjeta-imagen {
+        height: 160px;
+    }
+
+    .productos-grid {
+        padding: 15px;
+        gap: 16px;
+    }
+}

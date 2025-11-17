@@ -1,25 +1,33 @@
+import { useState, useContext } from 'react'
 import { Card } from '../components/Card'
-import { useContext } from 'react'
+import { ModalCheckout } from '../components/ModalCheckout'
+
 import { ProductosContext } from '../context/ProductosContext'
 import { CarritoContext } from '../context/CarritoContext'
 
 export const ComprasPage = () => {
     const { productos } = useContext(ProductosContext)
-
     const { agregarCompra, eliminarCompra } = useContext(CarritoContext)
 
-    const handleAgregar = (compra) => {
-        agregarCompra(compra)
+    const [modalOpen, setModalOpen] = useState(false)
+    const [productoSeleccionado, setProductoSeleccionado] = useState(null)
+
+    // Abrir modal y asignar producto
+    const handleComprar = (producto) => {
+        setProductoSeleccionado(producto)
+        setModalOpen(true)
     }
-    const handleQuitar = (id) => {
-        eliminarCompra(id)
+
+    // Confirmar compra desde modal
+    const handleConfirmarCompra = (productoConCantidad) => {
+        agregarCompra(productoConCantidad)
+        setModalOpen(false)
     }
 
     return (
         <>
             <h1>Compras: </h1>
             <hr />
-
             <div className='productos-grid'>
                 {productos.map((producto) => (
                     <Card
@@ -30,9 +38,21 @@ export const ComprasPage = () => {
                         descripcion={producto.description}
                         precio={producto.price}
                         producto={producto}
+                        handleAgregar={() => agregarCompra(producto)}
+                        handleQuitar={() => eliminarCompra(producto.id)}
+                        handleComprar={() => handleComprar(producto)} // Nuevo botón
                     />
                 ))}
             </div>
+
+            {modalOpen && (
+                <ModalCheckout
+                    isOpen={modalOpen}
+                    onClose={() => setModalOpen(false)}
+                    producto={productoSeleccionado}
+                    onConfirm={handleConfirmarCompra}
+                />
+            )}
         </>
     )
 }

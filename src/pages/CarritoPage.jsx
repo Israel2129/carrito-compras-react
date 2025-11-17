@@ -1,5 +1,7 @@
-import React, { useContext } from 'react'
+// src/pages/CarritoPage.jsx
+import React, { useContext, useState } from 'react'
 import { CarritoContext } from '../context/CarritoContext'
+import { ModalCheckoutCarrito } from '../components/ModalCheckoutCarrito' // Nuevo modal
 
 export const CarritoPage = () => {
     const {
@@ -9,78 +11,115 @@ export const CarritoPage = () => {
         eliminarCompra,
     } = useContext(CarritoContext)
 
+    const [modalOpen, setModalOpen] = useState(false)
+
+    // Calcular total del carrito
     const calcularTotal = () => {
         return listaCompras
             .reduce((total, item) => total + item.price * item.cantidad, 0)
             .toFixed(2)
     }
 
-    const handleImpresion = () => {
-        print()
+    // Abrir modal de compra
+    const handleComprar = () => {
+        if (listaCompras.length > 0) {
+            setModalOpen(true)
+        }
+    }
+
+    // Confirmar compra desde modal
+    const handleConfirmarCompra = () => {
+        setModalOpen(false)
+        // Aquí puedes vaciar el carrito o mostrar mensaje
+        alert('Compra confirmada!')
     }
 
     return (
         <>
-            <table className='table'>
-                <thead>
-                    <tr>
-                        <th scope='col'>Nombre</th>
-                        <th scope='col'>Precio</th>
-                        <th scope='col'>Cantidad</th>
-                        <th scope='col'>Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {listaCompras.map((item) => (
-                        <tr key={item.id}>
-                            <th>{item.title}</th>
-                            <td>{item.price}</td>
-                            <td>
-                                <button
-                                    className='btn btn-outline-primary  mx-2 sm'
-                                    onClick={() => disminuirCantidad(item.id)}
-                                >
-                                    -
-                                </button>
-                                <button className='btn btn-primary'>
-                                    {item.cantidad}
-                                </button>
-                                <button
-                                    className='btn btn-outline-primary  mx-2'
-                                    onClick={() => aumentarCantidad(item.id)}
-                                >
-                                    +
-                                </button>
-                            </td>
+            <h1>Carrito de Compras</h1>
+            <hr />
 
-                            <td>
-                                <button
-                                    type='button'
-                                    className='btn btn-danger'
-                                    onClick={() => eliminarCompra(item.id)}
-                                >
-                                    Eliminar
-                                </button>
-                            </td>
+            <div className='table-responsive'>
+                <table className='table table-striped'>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Eliminar</th>
                         </tr>
-                    ))}
-                    <th>
-                        <b>TOTAL:</b>
-                    </th>
-                    <td></td>
-                    <td></td>
-                    <td>${calcularTotal()}</td>
-                </tbody>
-            </table>
-            <div className='d-grid gap-1'>
+                    </thead>
+                    <tbody>
+                        {listaCompras.map((item) => (
+                            <tr key={item.id}>
+                                <td>{item.title}</td>
+                                <td>${item.price}</td>
+                                <td>
+                                    <button
+                                        className='btn btn-outline-primary mx-1'
+                                        onClick={() =>
+                                            disminuirCantidad(item.id)
+                                        }
+                                    >
+                                        -
+                                    </button>
+                                    <span className='mx-2'>
+                                        {item.cantidad}
+                                    </span>
+                                    <button
+                                        className='btn btn-outline-primary mx-1'
+                                        onClick={() =>
+                                            aumentarCantidad(item.id)
+                                        }
+                                    >
+                                        +
+                                    </button>
+                                </td>
+                                <td>
+                                    <button
+                                        className='btn btn-danger'
+                                        onClick={() => eliminarCompra(item.id)}
+                                    >
+                                        Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+                        {listaCompras.length > 0 && (
+                            <tr>
+                                <td
+                                    colSpan='3'
+                                    style={{ fontWeight: 'bold' }}
+                                >
+                                    TOTAL:
+                                </td>
+                                <td style={{ fontWeight: 'bold' }}>
+                                    ${calcularTotal()}
+                                </td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+            </div>
+
+            <div className='d-grid gap-2 mt-3'>
                 <button
-                    className='btn btn-primary'
-                    onClick={handleImpresion}
-                    disabled={listaCompras < 1}
+                    className='btn btn-primary btn-lg'
+                    onClick={handleComprar}
+                    disabled={listaCompras.length < 1}
                 >
                     COMPRAR
                 </button>
             </div>
+
+            {modalOpen && (
+                <ModalCheckoutCarrito
+                    isOpen={modalOpen}
+                    onClose={() => setModalOpen(false)}
+                    productos={listaCompras}
+                    onConfirm={handleConfirmarCompra}
+                />
+            )}
         </>
     )
 }
