@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react'
 import { Card } from '../components/Card'
-import { ModalCheckout } from '../components/ModalCheckout'
+import { ModalCheckout } from '../modal/ModalCheckout'
 
 import { ProductosContext } from '../context/ProductosContext'
 import { CarritoContext } from '../context/CarritoContext'

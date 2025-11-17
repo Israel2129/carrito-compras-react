@@ -1,7 +1,7 @@
 // src/pages/CarritoPage.jsx
 import React, { useContext, useState } from 'react'
 import { CarritoContext } from '../context/CarritoContext'
-import { ModalCheckoutCarrito } from '../components/ModalCheckoutCarrito' // Nuevo modal
+import { ModalCheckoutCarrito } from '../modal/ModalCheckoutCarrito' // Nuevo modal
 
 export const CarritoPage = () => {
     const {
