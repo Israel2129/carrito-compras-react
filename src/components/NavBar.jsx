@@ -3,10 +3,9 @@ import { ShoppingCart } from '@mui/icons-material'
 import { NavLink } from 'react-router-dom'
 import { useContext } from 'react'
 import { CarritoContext } from '../context/CarritoContext'
-    
+
 export const NavBar = () => {
-    
-    const {listaCompras} = useContext(CarritoContext)
+    const { listaCompras } = useContext(CarritoContext)
 
     return (
         <nav className='navbar navbar-expand-lg bg-body-tertiary'>
@@ -16,7 +15,7 @@ export const NavBar = () => {
                     className='navbar-brand'
                     href='#'
                 >
-                    Carrito
+                    Compras
                 </NavLink>
                 <button
                     className='navbar-toggler'
@@ -34,14 +33,7 @@ export const NavBar = () => {
                     id='navbarSupportedContent'
                 >
                     <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
-                        <li className='nav-item'>
-                            <NavLink
-                                to='/'
-                                className='nav-link active'
-                            >
-                                Compras
-                            </NavLink>
-                        </li>
+                        <li className='nav-item'></li>
                     </ul>
                     <NavLink to='/carrito'>
                         <Badge

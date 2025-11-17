@@ -1,4 +1,3 @@
-// src/components/ModalCheckout.jsx
 import { useState } from 'react'
 import '../styles/modalCheckout.css'
 
