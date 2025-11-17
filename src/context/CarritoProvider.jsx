@@ -1,7 +1,7 @@
-import { useReducer } from 'react'
+import { useReducer, useEffect } from 'react'
 import { CarritoContext } from './CarritoContext'
 
-const initialState = []
+const initialState = JSON.parse(localStorage.getItem('carrito')) || []
 
 export const CarritoProvider = ({ children }) => {
     const comprasReducer = (state = initialState, action = {}) => {
@@ -31,6 +31,25 @@ export const CarritoProvider = ({ children }) => {
     }
 
     const [listaCompras, dispatch] = useReducer(comprasReducer, initialState)
+
+    // Guardar en localStorage
+    useEffect(() => {
+        localStorage.setItem('carrito', JSON.stringify(listaCompras))
+    }, [listaCompras])
+
+    // Sincronizar entre pestañas
+    useEffect(() => {
+        const sincronizarCarrito = (event) => {
+            if (event.key === 'carrito') {
+                dispatch({
+                    type: 'REEMPLAZAR_CARRITO',
+                    payload: JSON.parse(event.newValue) || [],
+                })
+            }
+        }
+        window.addEventListener('storage', sincronizarCarrito)
+        return () => window.removeEventListener('storage', sincronizarCarrito)
+    }, [])
 
     const agregarCompra = (compra) => {
         compra.cantidad = 1

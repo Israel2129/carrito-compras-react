@@ -4,16 +4,15 @@ import { ProductosContext } from '../context/ProductosContext'
 import { CarritoContext } from '../context/CarritoContext'
 
 export const ComprasPage = () => {
-    
-    const {productos} = useContext (ProductosContext)
+    const { productos } = useContext(ProductosContext)
 
-    const { agregarCompra, eliminarCompra} = useContext(CarritoContext)
+    const { agregarCompra, eliminarCompra } = useContext(CarritoContext)
 
     const handleAgregar = (compra) => {
         agregarCompra(compra)
     }
     const handleQuitar = (id) => {
-        eliminarCompra(id) 
+        eliminarCompra(id)
     }
 
     return (
@@ -21,17 +20,19 @@ export const ComprasPage = () => {
             <h1>Compras: </h1>
             <hr />
 
-            {productos.map((producto) => (
-                <Card
-                    key={producto.id}
-                    imagen={producto.image}
-                    titulo={producto.title}
-                    descripcion={producto.description}
-                    precio={producto.price}
-                    handleAgregar={() => handleAgregar(producto)}
-                    handleQuitar={() => handleQuitar(producto.id)}
-                ></Card>
-            ))}
+            <div className='productos-grid'>
+                {productos.map((producto) => (
+                    <Card
+                        key={producto.id}
+                        id={producto.id}
+                        imagen={producto.image}
+                        titulo={producto.title}
+                        descripcion={producto.description}
+                        precio={producto.price}
+                        producto={producto}
+                    />
+                ))}
+            </div>
         </>
     )
 }

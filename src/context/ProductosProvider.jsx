@@ -11,7 +11,12 @@ export const ProductosProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        fetchProductos()
+        const productosGuardados = localStorage.getItem('productos')
+        if (productosGuardados) {
+            setProductos(JSON.parse(productosGuardados))
+        } else {
+            fetchProductos()
+        }
     }, [])
 
     return (

@@ -37,7 +37,7 @@ export const CarritoPage = () => {
                             <td>{item.price}</td>
                             <td>
                                 <button
-                                    className='btn btn-outline-primary  mx-2'
+                                    className='btn btn-outline-primary  mx-2 sm'
                                     onClick={() => disminuirCantidad(item.id)}
                                 >
                                     -

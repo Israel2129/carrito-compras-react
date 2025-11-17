@@ -1,18 +1,13 @@
-import { useState } from "react"
+import { useContext } from 'react'
+import { CarritoContext } from '../context/CarritoContext'
 import '../styles/card.css'
 
+export const Card = ({ id, imagen, titulo, descripcion, precio, producto }) => {
+    const { listaCompras, agregarCompra, eliminarCompra } =
+        useContext(CarritoContext)
 
-export const Card = ({imagen, titulo, descripcion, precio, handleAgregar, handleQuitar,}) => {
-    const [added, setAdded] = useState(false)
-
-    const clickAgregar = () => {
-        handleAgregar()
-        setAdded(true)
-    }
-    const clickQuitar = () => {
-        handleQuitar()
-        setAdded(false)
-    }
+    // Ver si ya está en el carrito
+    const isAdded = listaCompras.some((item) => item.id === id)
 
     return (
         <div className='tarjeta'>
@@ -26,19 +21,17 @@ export const Card = ({imagen, titulo, descripcion, precio, handleAgregar, handle
                 <p className='tarjeta-descripcion'>{descripcion}</p>
                 <p className='tarjeta-precio'>{precio}</p>
 
-                {added ? (
+                {isAdded ? (
                     <button
-                        type='button'
                         className='boton-quitar'
-                        onClick={clickQuitar}
+                        onClick={() => eliminarCompra(id)}
                     >
                         Quitar del Carrito
                     </button>
                 ) : (
                     <button
-                        type='button'
                         className='boton-agregar'
-                        onClick={clickAgregar}
+                        onClick={() => agregarCompra(producto)}
                     >
                         Agregar al Carrito
                     </button>
