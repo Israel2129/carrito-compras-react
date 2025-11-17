@@ -137,6 +137,7 @@
 .boton-quitar:hover {
     background-color: var(--color-alerta);
     color: white;
+<<<<<<< HEAD
 }
 /* modalCheckout.css */
 .modal-overlay {
@@ -171,9 +172,20 @@
     to {
         opacity: 1;
         transform: translateY(0);
-    }
+=======
 }
 
+/* ==================================================== */
+/* DISEÑO RESPONSIVO */
+/* ==================================================== */
+@media (max-width: 375px) {
+    .productos-grid {
+        gap: 16px;
+        padding: 15px;
+>>>>>>> 8abcbea084b7196e3bfa32f9df96b2e0ff3ff99c
+    }
+
+<<<<<<< HEAD
 .modal-header {
     display: flex;
     justify-content: space-between;
@@ -293,6 +305,8 @@
         padding: 15px;
     }
 
+=======
+>>>>>>> 8abcbea084b7196e3bfa32f9df96b2e0ff3ff99c
     .tarjeta-imagen {
         height: 180px;
     }
